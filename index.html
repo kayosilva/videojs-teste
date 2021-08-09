@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VideoJS Chromecast test</title>
+    <!-- ***STYLESHEETS*** -->
+    <!-- Videojs -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video-js.css">
+    <!-- ChromeCast CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@silvermine/videojs-chromecast@1.2.0/dist/silvermine-videojs-chromecast.css"
+          rel="stylesheet">
+    <!-- HTML personal style -->
+
+    <!-- ***SCRiPTS*** -->
+    <!-- videojs -->
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video.js"></script>
+    <!-- ChromeCast -->
+    <script src="https://cdn.jsdelivr.net/npm/@silvermine/videojs-chromecast@1.2.0/dist/silvermine-videojs-chromecast.min.js"></script>
+    <script type="text/javascript"
+            src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+</head>
+
+<body>
+<div class="player-container">
+    <div class="main-preview-player">
+        Video
+        <video id="pd-video" class="video-js vjs-fluid-pd" height="360" width="640" controls></video>
+        <!--        <div class="playlist-container preview-player-dimensions">-->
+        <!--            <div class="vjs-playlist">-->
+        <!--                &lt;!&ndash;-->
+        <!--              The contents of this element will be filled based on the-->
+        <!--              currently loaded playlist-->
+        <!--            &ndash;&gt;-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </div>
+</div>
+<script>
+    var options;
+    options = {
+        techOrder: ['chromecast', 'html5'],
+        // liveui: true,
+        // html5: {
+        //     hls: {
+        //         overrideNative: true
+        //     },
+        //     nativeAudioTracks: false,
+        //     nativeVideoTracks: false,
+        // },
+        sources: [
+            {
+                src: 'http://www.caminandes.com/download/03_caminandes_llamigos_1080p.mp4',
+                type: 'video/mp4',
+            },
+        ],
+    };
+    player = videojs('pd-video', options);
+    player.chromecast();
+</script>
+</body>
+</html>
